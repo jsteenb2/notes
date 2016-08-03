@@ -17,19 +17,19 @@ Use the same name for each btn, and it groups them together.
 ##### How do you make text show up in an HTML form when it is first rendered by the page?
 Use value or (placeholder if not wanting it to be actual submittable text).
 
-##### What are the two ways you can link a <label> tag to a specific input?
-Either use the for attribute or wrap the input with the <label> open and closing tags. Can only wrap one input at a time.
+##### What are the two ways you can link a ```<label>``` tag to a specific input?
+Either use the for attribute or wrap the input with the ```<label>``` open and closing tags. Can only wrap one input at a time.
 
 ##### What do you need to submit a form?
 To submit the entered information. In the submit input need to add attribute type="submit".
 
-##### How is a <textarea> tag different from an <input type="text"> tag?
+##### How is a ```<textarea>``` tag different from an ```<input type="text">``` tag?
 Can be multiline input.
 
-##### How do you specify <textarea> size?
+##### How do you specify ```<textarea>``` size?
 Using rows and cols attributes.
 
-##### What security features are NOT provided by <input type="password">
+##### What security features are NOT provided by ```<input type="password"\>```
 No hiding the actual password unless you submit it via HTTPS.
 
 ##### How do you put grayed out placeholder text?
@@ -39,7 +39,7 @@ Use placeholder attribute.
 Make the checked attribute true.
 
 ```html
-  <input type="checkbox" name="vehicle" value="Car">
+  <input type="checkbox" name="vehicle" value="Car"\>
 ```
 
 ##### How do you disable a form input?
@@ -72,9 +72,9 @@ It will contain the http type and what controller it matches with. Also included
 ```ruby
 Started POST "/user" for 127.0.0.1 at 2013-11-21 19:10:47 -0800
 Processing by UsersController#create as HTML
-Parameters: { "utf8"=>"✓", 
+Parameters: { "utf8"=>"✓",
               "authenticity_token"=>"jJa87aK1OpXfjojryBk2Db6thv0K3bSZeYTuW8hF4Ns=",
-              "email"=>"foo@bar.com", 
+              "email"=>"foo@bar.com",
               "commit"=>"Submit Form" }
 ```
 
@@ -107,10 +107,10 @@ Use hard brackets.
 Produces:
 
 ```ruby
-Parameters: { "utf8"=>"✓", 
-              "authenticity_token"=>"wd4R0OmkSallVj+rey34+8TCKtExrs6WTEuexx12dh8=", 
-              "post"=>{ "title"=>"Cool Title", 
-                        "body"=>"Cooler Body"}, 
+Parameters: { "utf8"=>"✓",
+              "authenticity_token"=>"wd4R0OmkSallVj+rey34+8TCKtExrs6WTEuexx12dh8=",
+              "post"=>{ "title"=>"Cool Title",
+                        "body"=>"Cooler Body"},
               "commit"=>"Submit Post"}
 ```
 
@@ -141,9 +141,9 @@ Use helper method
 
 ```ruby
 > helper.tag(:div)
-#=> "<div />" 
+#=> "<div />"
 > helper.content_tag(:div)
-#=> "<div></div>" 
+#=> "<div></div>"
 ```
 
 ##### How does form_tag work?
@@ -222,7 +222,7 @@ Can guarantee uniqueness using indices and so forth
 By calling the valid? method.  Can also run persisted? and new_record? methods to help validate.
 
 ##### What happens if one fails?
-An error is raised. 
+An error is raised.
 
 ##### How do you only run a validation on a specific controller method?
 Using the :on attribute, like the following:
@@ -230,22 +230,22 @@ Using the :on attribute, like the following:
 ```ruby
 # app/models/post.rb
 class Post < ActiveRecord::Base
-  validates :title, 
-            :presence => true, 
+  validates :title,
+            :presence => true,
             :on => :create  #<<<<<<<<
 end
 
 # if you want to raise an exception insetad of adding errors to the model object use :strict => true
 # app/models/post.rb
 class Post < ActiveRecord::Base
-  validates :title, 
-            :presence => true, 
+  validates :title,
+            :presence => true,
             :strict => true
 end
 ```
 
 ##### How would you manually skip validations when saving an object?
-?????  
+?????
 
 There are methods that skip validation
 
@@ -265,8 +265,8 @@ In the validates method you can pass options like you would any other hash.  See
 ```ruby
 # app/models/post.rb
 class Post < ActiveRecord::Base
-  validates :title, 
-            :presence => true, 
+  validates :title,
+            :presence => true,
             :message => "Need a title, dude!"
 end
 ```
@@ -277,8 +277,8 @@ Just pass that option in as well in your validates method
 ```ruby
 # app/models/post.rb
 class Post < ActiveRecord::Base
-  validates :title, 
-            :presence => true, 
+  validates :title,
+            :presence => true,
             :message => "Need a title, dude!",
             :allow_blank => true,
             :allow_nil => true
@@ -302,8 +302,8 @@ Add the presence hash, indicates the attribute is required.
 ```ruby
 # app/models/post.rb
 class Post < ActiveRecord::Base
-  validates :title, 
-            :presence => true 
+  validates :title,
+            :presence => true
 end
 ```
 
@@ -313,7 +313,7 @@ Add the uniqueness option which checks the if hte index is unique
 ```ruby
 # app/models/user.rb
 class User < ActiveRecord::Base
-  validates :email, 
+  validates :email,
             :uniqueness => true
 end
 ```
@@ -323,11 +323,11 @@ Add the length key/value hash and input what you want to validate too.
 
 ```ruby
 class Post < ActiveRecord::Base
-  validates :title, 
+  validates :title,
             :length =>{ :maximum => 40,
                         :minimum => 10,
                         :in => 10..40, # same as above
-                        :is => 16 } 
+                        :is => 16 }
 end
 ```
 
@@ -337,9 +337,9 @@ Add in the inclusion hash with options array
 ```ruby
 # app/models/student.rb
 class Student < ActiveRecord::Base
-  validates :role, 
-            :inclusion => [ "Team Leader", 
-                            "Class President", 
+  validates :role,
+            :inclusion => [ "Team Leader",
+                            "Class President",
                             "Student" ]
 end
 ```
@@ -350,7 +350,7 @@ Can be done with REGEX and other ways.
 ```ruby
 # app/models/user.rb
 class User < ActiveRecord::Base
-  validates :email, 
+  validates :email,
             :format => { :with => /@/ }
 end
 ```
@@ -361,17 +361,17 @@ It'll pass along unscathed regardless if it fits or not. The DB may still reject
 ???? [On This](https://www.vikingcodeschool.com/dashboard#/basic-forms-and-active-record/active-record-validations)
 While a method gives you the most flexibility, you can also (particularly in this simple example) just use a Proc:
 
-```ruby 
+```ruby
 # app/models/student.rb
 class Student < ActiveRecord::Base
-  validates :sid, 
-            :presence => true, 
+  validates :sid,
+            :presence => true,
             :if => Proc.new{ registered }
 end
 ```
 
 ##### How do you access the errors on an object?
-There are a number of methods you can use to access the methods object and its information.  
+There are a number of methods you can use to access the methods object and its information.
 
 ```ruby
 # app/models/post.rb
@@ -380,28 +380,28 @@ class Post < ActiveRecord::Base
 end
 
 p = Post.new
-#=> #<Post id: nil, title: nil, body: nil, created_at: nil, updated_at: nil> 
+#=> #<Post id: nil, title: nil, body: nil, created_at: nil, updated_at: nil>
 > p.title = "short title"
-#=> "short title" 
+#=> "short title"
 > p.valid?
-#=> true 
+#=> true
 > p.title = "very super duper long title"
-#=> "very super duper long title" 
+#=> "very super duper long title"
 > p.valid?
-#=> false 
+#=> false
 > p.errors
-#=> #<ActiveModel::Errors:0x007f9df7da9778 @base=#<Post id: nil, title: "very super duper long title", body: nil, created_at: nil, updated_at: nil>, @messages={:title=>["is too long (maximum is 20 characters)"]}> 
+#=> #<ActiveModel::Errors:0x007f9df7da9778 @base=#<Post id: nil, title: "very super duper long title", body: nil, created_at: nil, updated_at: nil>, @messages={:title=>["is too long (maximum is 20 characters)"]}>
 > p.errors[:title]
-#=> ["is too long (maximum is 20 characters)"] 
+#=> ["is too long (maximum is 20 characters)"]
 > p.errors.full_messages
-#=> ["Title is too long (maximum is 20 characters)"] 
+#=> ["Title is too long (maximum is 20 characters)"]
 ```
 
 ##### How do you access the errors for a specific attribute of an object?
 Select the errors object and provide it an attribute key to access the data there
 
 ```ruby
-errors[:attribute] 
+errors[:attribute]
 # ex
 errors[:username]
 ```
@@ -435,14 +435,14 @@ end
 
 # Sample validation with all the options
 validates :title, :body, :subheading
-            :presence => true, 
+            :presence => true,
             :uniqueness => true,
             :length =>{ :maximum => 40,
                         :minimum => 10,
                         :in => 10..40, # same as above
                         :is => 16 },
-            :inclusion => [ "Team Leader", 
-                            "Class President", 
+            :inclusion => [ "Team Leader",
+                            "Class President",
                             "Student" ],
             :format => { :with => /@/ },
             :on => :create,
@@ -488,7 +488,7 @@ When a create fails per say, you render the /new page and the errors object is p
 Use the pluralize method as seen above ^
 
 ##### How can you get a list of form errors to display atop the form?
-Add conditional logic that adds to the page at the top, generally above the 
+Add conditional logic that adds to the page at the top, generally above the
 
 ```ruby
 # app/views/posts/new.html.erb
@@ -515,7 +515,7 @@ Add conditional logic local to the field and include the name of the field as th
 ...
 <%= form_tag posts_path do %>
   <% unless @post.errors[:title].empty? %>
-    <div class="error">
+    < div class="error">
       <%= "Post #{@post.errors[:title].first}" %>
     </div>
   <% end %>
@@ -547,7 +547,7 @@ end
 ```
 
 ##### What does form_for do for you when you have errors?
-You can attach the form_for's reference object into the helper method above. 
+You can attach the form_for's reference object into the helper method above.
 
 ```ruby
 # app/views/posts/new.html.erb
