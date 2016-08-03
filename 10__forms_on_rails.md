@@ -1,7 +1,7 @@
-###  Review of HTML Forms
+##  Review of HTML Forms
 
 ##### What do the method and action attributes of an HTML form mean for your Router?
-Action defines the path where the form is submitted too (matches a controlller).
+Action defines the path where the form is submitted too (matches a controller).
 
 Method is the use of GET or POST.
 
@@ -39,7 +39,7 @@ Use placeholder attribute.
 Make the checked attribute true.
 
 ```html
-  <input type="checkbox" name="vehicle" value="Car"\>
+<input type="checkbox" name="vehicle" value="Car">
 ```
 
 ##### How do you disable a form input?
@@ -64,7 +64,7 @@ The utf8 input and the authenticity input.
 ##### If you build a dropdown where the user selects an integer, how does that look on the server side?
 Looks like a string. All forms submitted as strings.
 
-### Working with Forms in Rails
+## Working with Forms in Rails
 
 ##### What information is contained in your Rails server output when you submit a form?
 It will contain the http type and what controller it matches with. Also included is the params hash.
@@ -101,7 +101,7 @@ Use hard brackets.
 
 ```html
 <input type="text" name="post[title]">
-    <input type="text" name="post[body]">
+<input type="text" name="post[body]">
 ```
 
 Produces:
@@ -131,7 +131,7 @@ Just do it like a normal nested hash.
 ##### How do you manually create a form which submits a "PUT" or "DELETE" request?
 Include a hidden form element with value="patch" or "delete"
 
-### Rails Form Helpers
+## Rails Form Helpers
 
 ##### What do Rails form helpers return?
 Gives you dynamic form submissions when using form_for, can do both "create" and "edit" with same form.
@@ -200,7 +200,7 @@ Need to be properly name-spaced inside a sub-hash
 
 The nested *_tag helpers can take classes like they did inside the form_tag element.
 
-### Active Record Validations
+## Active Record Validations
 
 ##### What are the three major levels of form validation?
 Topmost level: write JS that validates if someone has filled out form properly
@@ -216,7 +216,7 @@ Great for user experience b/c feedback is instant
 Can be easily circumvented
 
 ##### Why are database validations necessary beyond just application-level validations?
-Can guarantee uniqueness using indices and so forth
+Can guarantee uniqueness using indices and so forth. Will take care of concurrency issues.
 
 ##### How do you manually run an object's validations?
 By calling the valid? method.  Can also run persisted? and new_record? methods to help validate.
@@ -232,7 +232,7 @@ Using the :on attribute, like the following:
 class Post < ActiveRecord::Base
   validates :title,
             :presence => true,
-            :on => :create  #<<<<<<<<
+            :on => :create  #<<<<<<<<<<<<<<<<<<<<<<
 end
 
 # if you want to raise an exception insetad of adding errors to the model object use :strict => true
@@ -245,7 +245,12 @@ end
 ```
 
 ##### How would you manually skip validations when saving an object?
-?????
+Call out that save: false in the validates method atop the model.
+
+```ruby
+save(:validate => false)
+```
+??????????????? Where do we use this at?
 
 There are methods that skip validation
 
@@ -460,7 +465,7 @@ validates :title, :body, :subheading
 @user.errors.full_messages  # Array (potentially many strings)
 ```
 
-### Handling Validation Errors
+## Handling Validation Errors
 
 ##### How do you get the count of error messages on your failed model object?
 Access the errors hash in the view to inform user of errors.
